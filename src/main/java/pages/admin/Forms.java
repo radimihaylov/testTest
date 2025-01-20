@@ -16,7 +16,7 @@ import java.time.Duration;
 
 public class Forms extends BasePage {
 
-    @FindBy (xpath = "//span[@class='cu-form__submit-label']")
+    @FindBy (xpath = "//a[contains(@class, 'cu-form__report-abuse-link ng-tns-')]")
     private WebElement reportAbuse;
 
     @FindBy (id = "cu-form-control-0")
@@ -32,21 +32,22 @@ public class Forms extends BasePage {
         driver.get(URLforms);
     }
 
-//    public void clickReportAbuse() {
-////        WaitTool.waitForPageLoad(driver);
-////        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", reportAbuse);
-////        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-////        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='cu-form__submit-label']")));
-////        WaitTool.waitForElement(driver, (By) reportAbuse, 10);
-////        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", reportAbuse);
-////        clickElement(reportAbuse);
-//    }
+    public void clickReportAbuse() {
+        WaitTool.waitForPageLoad(driver);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@class, 'cu-form__report-abuse-link ng-tns-')]")));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", reportAbuse);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//a[contains(@class, 'cu-form__report-abuse-link ng-tns-')]")));
+        WaitTool.waitForElement(driver, (By) reportAbuse, 10);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", reportAbuse);
+//        clickElement(reportAbuse);
+    }
 
     public void type(String text) {
 ////        WaitTool.waitForElementRefresh(driver, (By) nameFieldLastPage, 10);
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//        wait.until(ExpectedConditions.urlToBe("https://forms.clickup.com/2314027/p/f/26ktb-6387/56LKNUZ9BDYXSC73SY/unlock-your-automation-potentialwitha-free-framework-assessment"));
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.urlToBe("https://forms.clickup.com/2314027/p/f/26ktb-6387/56LKNUZ9BDYXSC73SY/unlock-your-automation-potentialwitha-free-framework-assessment"));
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", nameFieldLastPage);
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", nameFieldLastPage);
         writeText(nameFieldLastPage, text);
 

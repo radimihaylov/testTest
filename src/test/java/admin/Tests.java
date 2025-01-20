@@ -11,18 +11,19 @@ public class Tests extends BaseTest {
     @Test
     public void TrainingTests() {
         webApp.firstPageLoginAndElse().goToPage();
-        webApp.firstPageLoginAndElse().clickButtonDownRight();
-        webApp.firstPageLoginAndElse().writeTextInTheFieldName("Radoslav");
-        webApp.firstPageLoginAndElse().emailType();
-        webApp.firstPageLoginAndElse().typeInTheMessageField(":) DONE");
-        webApp.firstPageLoginAndElse().typeResult("27");
-        webApp.firstPageLoginAndElse().clickSubmitButton();
-        webApp.firstPageLoginAndElse().loginF("thing", "1234");
+//        webApp.firstPageLoginAndElse().clickButtonDownRight();
+//        webApp.firstPageLoginAndElse().writeTextInTheFieldName("Radoslav");
+//        webApp.firstPageLoginAndElse().emailType();
+//        webApp.firstPageLoginAndElse().typeInTheMessageField(":) DONE");
+//        webApp.firstPageLoginAndElse().typeResult("24");
+//        webApp.firstPageLoginAndElse().clickSubmitButton();
+//        webApp.firstPageLoginAndElse().loginF("thing", "1234");
+        webApp.firstPageLoginAndElse().loginButtonNew();
         webApp.backOffice().goToSite();
         webApp.ultimateqa().clickDiscoverySession();
 //        webApp.forms().goToForms();
-        webApp.forms().type("Radoslav");
-//        webApp.forms().clickReportAbuse();
+//        webApp.forms().type("Radoslav");
+        webApp.forms().clickReportAbuse();
 
     }
 
@@ -30,7 +31,7 @@ public class Tests extends BaseTest {
     public void check() {
         driver.get("https://forms.clickup.com/2314027/p/f/26ktb-6387/56LKNUZ9BDYXSC73SY/unlock-your-automation-potentialwitha-free-framework-assessment");
         driver.switchTo().frame("c-1bbbpxln36qf");
-        WebElement element = driver.findElement(By.id("cu-form-control-0"));
+        WebElement element = driver.findElement(By.xpath("//a[contains(@class, 'cu-form__report-abuse-link ng-tns-')]"));
         element.click();
         driver.switchTo().defaultContent();
 //        WebElement element = driver.findElement(By.id("cu-form-control-0"));

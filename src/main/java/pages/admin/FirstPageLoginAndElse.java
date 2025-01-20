@@ -34,10 +34,10 @@ public class FirstPageLoginAndElse extends BasePage {
     @FindBy (xpath = "(//button[@name='et_builder_submit_button'])[1]")
     private WebElement submitButton;
 
-    @FindBy (id = "user_login_678d4f2267cc0")
+    @FindBy (css = "[id *= 'user_login_']")
     private WebElement usernameLoginField;
 
-    @FindBy (id = "user_pass_678d4f2267cc0")
+    @FindBy (css = "[id *= 'user_pass_']")
     private WebElement passwordLoginField;
 
     @FindBy (xpath = "(//button[@class='et_pb_newsletter_button et_pb_button'])[1]")
@@ -89,6 +89,12 @@ public class FirstPageLoginAndElse extends BasePage {
         writeText(usernameLoginField, user);
         writeText(passwordLoginField, password);
         clickElement(loginButton);
+    }
+
+    public void loginButtonNew() {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", loginButton);
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", loginButton);
+//        clickElement(loginButton);
     }
 
 
